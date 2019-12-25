@@ -27,10 +27,10 @@ header {
 }
 .headmap-text-box{
     position: absolute;
-    width: 710px;
+    width: 50vw;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-40%,-50%);
 }
 h1 {
     margin: 0;
@@ -45,7 +45,7 @@ h1 {
     float: left;
 }
 .input {
-    width: 425px;
+    width: 100%;
     border: 2px solid #fff;
     background: transparent;
     padding: 10px 30px;
@@ -55,6 +55,7 @@ h1 {
     letter-spacing: 1px;
     outline: none;    
 }
+/*TOP NAV BAR*/
 .logo {
     background: url(../img/logo.svg);
     background-size: cover;
@@ -65,28 +66,52 @@ h1 {
     margin-top: 20px;
 }
 .nav-main {
-    float: right;
-    list-style: none;
+    overflow: hidden;
+}
+.nav-main a {
     margin-top: 60px;
-}
-.nav-main li {
-    display: inline-block;
-    margin-left: 40px;
-}
-.nav-main li a:link,
-.nav-main li a:visited{
+    float: right;
+    display: block;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 90%;
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.2s;
-    padding: 4px 0px;
+    padding: 4px 10px;
 }
-.nav-main li a:hover,
-.nav-maiin li a:active {
+.nav-main a:hover {
     border-bottom: 2px solid #2cb178;
 }
+.nav-main.active {
+    color: white;
+}
+.nav-main .icon {
+    display: none;
+    transition: all 0.2s;
+}
+@media screen and (max-width: 720px) {
+    .nav-main a {display: none;}
+    .nav-main a.icon {
+        float: right;
+        display: block;
+    }
+}
+@media screen and (max-width: 720px) {
+    .nav-main.responsive {position: relative;}
+    .nav-main.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: all 0.2s;
+    }
+    .nav-main.responsive a {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+}
+
 /*****************************************************************************/
 /*BUTTONS*/
 .btn {

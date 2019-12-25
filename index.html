@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
         <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
         <link rel="stylesheet" type="text/css" href="resources/css/index-style.css">
+        <script src="resources/js/nav-script.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700&display=swap" rel="stylesheet">
         <title>Trailfinder</title>
     </head>
@@ -12,18 +14,21 @@
             <nav>
                 <div class="row">
                     <div class="logo"></div>
-                    <ul class="nav-main">
-                        <li><a href="#">History</a></li>
-                        <li><a href="#">Save Location</a></li>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
+                    <div class="nav-main" id="topnav">
+                        <a href="javasctipt:void(0);" class="icon" onclick="navMenufunction()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <a href="#home">Home</a>
+                        <a href="#login">Login</a>
+                        <a href="#history">History</a>
+                        <a href="#save">Save Location</a>
+                    </div>
                 </div>
             </nav>
             <div class="headmap-text-box">
                 <h1>Welcome to the Outdoors.</h1>
                 <div class="search-container">
-                    <input type="text" class="input" placeholder="Search City/Zipcode">
+                    <input type="text" class="input" placeholder="Address/City/Zip">
                     <div class="btn btn-close">&times;</div>
                 </div>
                 <a class="btn" href="#">Find Trails</a>
