@@ -27,10 +27,9 @@ header {
 }
 .headmap-text-box{
     position: absolute;
-    width: 50vw;
     top: 50%;
     left: 50%;
-    transform: translate(-40%,-50%);
+    transform: translate(-50%,-50%);
 }
 h1 {
     margin: 0;
@@ -95,21 +94,41 @@ h1 {
     .nav-main a.icon {
         float: right;
         display: block;
+        border-bottom: none;
+        border-right: 2px solid transparent;
+        transition: border-right 0.2s;
+    }
+    .nav-main a.icon:hover {
+        border-right: 2px solid #2cb178;
     }
 }
 @media screen and (max-width: 720px) {
-    .nav-main.responsive {position: relative;}
+    .nav-main.responsive {
+        position: relative;
+        float: right;
+        width: 25%;
+    }
     .nav-main.responsive a.icon {
-        position: absolute;
+        position: relative;
         right: 0;
         top: 0;
-        transition: all 0.2s;
     }
     .nav-main.responsive a {
         float: none;
         display: block;
-        text-align: center;
+        text-align: right;
+        padding: 4px 10px;
+        border-bottom: none;
+        border-right: 2px solid transparent;
+        transition: border-right 0.2s;
     }
+    .nav-main.responsive a:hover{
+        border-right: 2px solid #2cb178;
+    }
+    .nav-main.responsive a.plink {
+        margin-top: 1vh;
+    }
+    
 }
 
 /*****************************************************************************/
