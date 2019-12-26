@@ -45,7 +45,7 @@ h1 {
 }
 .input {
     width: 100%;
-    border: 2px solid #fff;
+    border: 1px solid rgb(104, 104, 104);
     background: transparent;
     padding: 10px 30px;
     border-radius: 10px;
