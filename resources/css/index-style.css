@@ -56,6 +56,9 @@ h1 {
 }
 /*TOP NAV BAR*/
 .logo {
+    position: absolute;
+    left: 15vw;
+    z-index: 1;
     background: url(../img/logo.svg);
     background-size: cover;
     background: radial-gradient(ellipse farthest-corner at );
@@ -65,7 +68,11 @@ h1 {
     margin-top: 20px;
 }
 .nav-main {
+    position: absolute;
+    right: 15vw;
+    z-index: 1;
     overflow: hidden;
+    float: right;
 }
 .nav-main a {
     margin-top: 60px;

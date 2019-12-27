@@ -28,7 +28,7 @@ header {
 /*TOP NAV BAR*/
 .logo {
     position: absolute;
-    left: 10vw;
+    left: 15vw;
     z-index: 1;
     background: url(../img/logo.svg);
     background-size: cover;
@@ -40,7 +40,7 @@ header {
 }
 .nav-main {
     position: absolute;
-    right: 10vw;
+    right: 15vw;
     z-index: 1;
     overflow: hidden;
     float: right;
