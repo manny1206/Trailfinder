@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript" src="resources/js/map-script.js"></script>
+        <script type="text/javascript" src="../general(used by multiple pages)/jquery-1.10.2.min.js"></script><!--jquery-->
+        <script src="../general(used by multiple pages)/js/nav-script.js"></script>
+        <script type="text/javascript" src="js/map-script.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzBH-KV-b_rJU6DZqQR5KzCJtMFGRwcts&callback=initMap"></script>
-        <link rel="stylesheet" type="text/css" href="resources/css/map-style.css"> 
+        <link rel="stylesheet" type="text/css" href="css/map-style.css"> 
+        <link rel="stylesheet" type="text/css" href="../general(used by multiple pages)/css/nav+background.css">
     </head>
     <body>
         <header>
@@ -11,7 +14,7 @@
                 <div class="row">
                     <div class="logo"></div>
                     <div class="nav-main" id="topnav">
-                        <a href="javasctipt:void(0);" class="icon" onclick="navMenufunction()">
+                        <a href="javascript:void(0);" class="icon" onclick="navMenufunction()">
                             <i class="fa fa-bars"></i>
                         </a>
                         <a href="#home" class="plink">Home</a>

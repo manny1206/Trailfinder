@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -15,12 +16,11 @@ html {
 .row {
     max-width: 1140px;
     margin: 0 auto;
-    overflow: hidden
 }
 /*****************************************************************************/
 /*HEADER*/
 header {
-    background-image: linear-gradient(rgba(0,0,0,0.5), #000), url(img/headmap-img.svg);
+    background-image: linear-gradient(rgba(0,0,0,0.5), #000), url(../img/background.svg);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -29,7 +29,7 @@ header {
 .logo {
     position: absolute;
     left: 15vw;
-    z-index: 1;
+    z-index: 10;
     background: url(../img/logo.svg);
     background-size: cover;
     background: radial-gradient(ellipse farthest-corner at );
@@ -41,7 +41,7 @@ header {
 .nav-main {
     position: absolute;
     right: 15vw;
-    z-index: 1;
+    z-index: 10;
     overflow: hidden;
     float: right;
 }
@@ -75,6 +75,7 @@ header {
         border-bottom: none;
         border-right: 2px solid transparent;
         transition: border-right 0.2s;
+        z-index: 10;
     }
     .nav-main a.icon:hover {
         border-right: 2px solid #2cb178;
@@ -82,6 +83,7 @@ header {
 }
 @media screen and (max-width: 720px) {
     .nav-main.responsive {
+        z-index: 10;
         position: relative;
         float: right;
         width: 25%;
@@ -105,11 +107,64 @@ header {
     }
     .nav-main.responsive a.plink {
         margin-top: 1vh;
-    }  
+    }
+    
 }
-/*MAP*/
-#map {
-    height: 100vh;
-    width: 100vw;
-    z-index: 0;
+
+/*****************************************************************************/
+/*BUTTONS*/
+.btn {
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: #2cb178; 
+    transition: background-color 0.2s;
+    outline: none;
+    border: 2px solid #2cb178;
+}
+.btn:hover,
+.btn:active {
+    background-color: #00b894;
+    border: 2px solid #00b894;
+    outline: none;
+}
+
+.btn-close {
+    position: absolute;
+    top: 27px;
+    right: 80px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s ease;
+    opacity: 0;
+    border: transparent;
+}
+.btn-close:active {
+    opacity: 1;
+}
+::-webkit-input-placeholder {
+    color: white;
+    font-family: 'Montserrat', 'sans-serif';
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+::-moz-input-placeholder {
+    color: white;
+    font-family: 'Montserrat', 'sans-serif';
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+::-ms-input-placeholder {
+    color: white;
+    font-family: 'Montserrat', 'sans-serif';
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
