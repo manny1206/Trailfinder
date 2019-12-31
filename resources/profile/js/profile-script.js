@@ -1,4 +1,4 @@
-$(function(){
+$(function(){//same as $(document).ready(function(){...})
   $('#profiletabs ul li a').on('click', function(e){
     e.preventDefault();
     var newcontent = $(this).attr('href');
@@ -13,3 +13,4 @@ $(function(){
     $(newcontent).removeClass('hidden');
   });
 });
+//4000220994373799 8/22 766
