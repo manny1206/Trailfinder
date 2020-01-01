@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -11,11 +12,12 @@ html {
     font-weight: 100;
     font-size: 20px;
     text-rendering: optimizeLegibility;
+    overflow: hidden;
 }
 .row {
     max-width: 1140px;
     margin: 0 auto;
-    overflow: hidden
+    overflow: hidden;
 }
 /*****************************************************************************/
 /*HEADER*/
@@ -113,7 +115,7 @@ header {
     position: relative;
     top: -80vh;
     display: block;
-    height: 70vh;
+    height: auto;
     width: 65vw;
     margin: 0 auto;
     padding-top: 30px;
@@ -126,6 +128,7 @@ header {
     width: 100%;
     height: 100%;
     background: rgba(70, 70, 70, 0.568);
+    font-size: 80%;
     border: 1px solid white;
     border-radius: 10px;
     padding: 25px 20px;
@@ -187,7 +190,7 @@ header {
   #profiletabs ul li a:hover {
     text-decoration: none;
     background: #00000000;
-    color: #565656;
+    color: #ffffff;
   }
   
   #profiletabs ul li a.sel {
@@ -199,6 +202,7 @@ header {
   /** profile content sections **/
   .hidden {
     display: none;
+    overflow: hidden;
   }
   
   .activity {
@@ -240,9 +244,20 @@ header {
   
   #friendslist li a img { float: left; margin-right: 5px; }
   
-  /** clearfix **/
-  .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
-  .clearfix { display: inline-block; }
-   
-  html[xmlns] .clearfix { display: block; }
-  * html .clearfix { height: 1%; }
+  /**
+    ** clearfix **
+    .clearfix:after {
+      content: "."; 
+      display: block; 
+      clear: both; 
+      visibility: hidden; 
+      line-height: 0; 
+      height: 0;
+    }
+    .clearfix {
+      display: inline-block;
+    }
+     
+    html[xmlns] .clearfix { display: block; }
+    * html .clearfix { height: 1%; }
+  **/
