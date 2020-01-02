@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(".clearableinput").each(function() {
+    $(".input").each(function() {
         var $inp = $(this).find("input:text"),
             $cle = $(this).find(".clearableinput_X");
     
