@@ -55,9 +55,7 @@ html {
 .nav-main a:hover {
     border-bottom: 2px solid #2cb178;
 }
-.nav-main.active {
-    color: white;
-}
+
 .nav-main .icon {
     display: none;
     transition: all 0.2s;
@@ -109,6 +107,7 @@ header {
     background-size: cover;
     background-position: center;
     height: 100vh;
+    z-index: 0;
 }
 .headmap-text-box{
     position: absolute;
@@ -122,7 +121,25 @@ h1 {
     font-size: 240%;
     font-weight: 300;
 }
-/*CLEARABLE INPUT*/
+.login {
+    display: none;
+}
+.login.active {
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 500px;
+    width: 400px;
+    background: rgba(70, 70, 70, 0.568);
+    padding: 50px 60px;
+}
+.login.active input {
+    background: transparent;
+}
+/*CLEARABLE SEARCH INPUT*/
 .input {
    position: relative; 
    height: 45px;
