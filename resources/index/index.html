@@ -23,7 +23,7 @@
                         </a>
                         <a href="#home" class="plink">Home</a>
                         <a href="javascript:void(0);" class="plink" onclick="loginfunction()">Login</a>
-                        <a class="plink inactive">Logout</a>
+                        <a id="logout" class="plink logout">Logout</a>
                         <a href="#history" class="plink">History</a>
                         <a href="#save" class="plink">Save Location</a>
                     </div>
@@ -42,8 +42,11 @@
             </div>
         </header>
         <form id="login" class="login" method="POST">
-            <input type="text" name="uname" placeholder="Username">
-            <input type="text" name="pword" placeholder="Password">
+            <div class="login-box">
+                <input type="text" name="uname" placeholder="Username">
+                <input type="text" name="pword" placeholder="Password">
+                <a class="btn btn-find" href="#login" onclick="logoutfunction()">Login</a>
+            </div>
         </form>
     </body>
 </html>

@@ -133,11 +133,36 @@ h1 {
     transform: translate(-50%,-50%);
     height: 500px;
     width: 400px;
-    background: rgba(70, 70, 70, 0.568);
+    background: rgba(70, 70, 70, 0.651);
+    border: 1px solid rgb(104, 104, 104);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    border-radius: 10px;
     padding: 50px 60px;
+}
+.login input {
+    width: 100%;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 10px;
+    font-size: 100%;
+    margin: 10px;
+    padding: 10px 20px;
+}
+.login-box {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .login.active input {
     background: transparent;
+}
+.plink.logout { 
+    display: none;
+}
+.plink.logout.active {
+    display: inline-block
 }
 /*CLEARABLE SEARCH INPUT*/
 .input {
