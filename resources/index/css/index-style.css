@@ -109,11 +109,12 @@ header {
     height: 100vh;
     z-index: 0;
 }
-.headmap-text-box{
+.headmap-text-box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    width: auto;
 }
 h1 {
     margin: 0;
@@ -121,6 +122,7 @@ h1 {
     font-size: 240%;
     font-weight: 300;
 }
+/*LOGIN POPUP*/
 .login {
     display: none;
 }
@@ -141,22 +143,28 @@ h1 {
     border-radius: 10px;
     padding: 50px 60px;
 }
-.login input {
-    width: 100%;
-    border: 1px solid rgb(104, 104, 104);
-    border-radius: 10px;
-    font-size: 100%;
-    margin: 10px;
-    padding: 10px 20px;
-}
 .login-box {
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-.login.active input {
+.login-box div {
+    width: 100%;
+    margin: 10px;
+}
+.login-box input {
+    width: 100%;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 10px;
+    outline: none;
     background: transparent;
+    color: white;
+    font-size: 100%;
+    padding: 10px 20px;
+}
+.btn.login {
+    margin: 10px;
 }
 .plink.logout { 
     display: none;
@@ -166,13 +174,14 @@ h1 {
 }
 /*CLEARABLE SEARCH INPUT*/
 .input {
-   position: relative; 
-   height: 45px;
+    display: inline-block;
+    width: 60%; 
+    position: relative; 
+    height: 45px;
 }
 .clearableinput {
     font-size: 100%;
-    float: left;
-    width: 60%;
+    width: 100%;
     border: 1px solid rgb(104, 104, 104);
     background: transparent;
     padding: 10px 20px;
@@ -214,20 +223,16 @@ h1 {
 }
 /*BUTTONS*/
 .btn {
+    text-align: center;
+    width: 35%;
+    display: inline-block;
     margin-top: 20px;
     text-transform: uppercase;
-}
-.btn.btn-find {
-    margin-top: 0px;
-    float: right;
-    width: 35%;
-    text-align: center;
+    padding: 10px 10px;
 }
 .short-txt {display: none;}
 .btn:link,
 .btn:visited {
-    display: inline-block;
-    padding: 10px 15px;
     font-weight: 300;
     color: white;
     text-decoration: none;
@@ -275,7 +280,7 @@ h1 {
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1000px) {
     .full-txt {display: none;}
     .short-txt {display: block;}
 }

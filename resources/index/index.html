@@ -34,18 +34,26 @@
                 <div class="input">
                     <input class="clearableinput" type="text" placeholder="Address/City/Zip">
                     <i class="clearableinput_X">&times;</i>
-                    <a class="btn btn-find" href="#map">
-                        <span class="full-txt">Find Trails</span>
-                        <span class="short-txt">Find</span>
-                    </a>
                 </div>
+                <a class="btn btn-find" href="#map">
+                <span class="full-txt">Find Trails</span>
+                <span class="short-txt">Find</span>
+                </a>
             </div>
         </header>
         <form id="login" class="login" method="POST">
             <div class="login-box">
-                <input type="text" name="uname" placeholder="Username">
-                <input type="text" name="pword" placeholder="Password">
-                <a class="btn btn-find" href="#login" onclick="logoutfunction()">Login</a>
+                <div class="input">
+                    <input type="text" name="uname" placeholder="Username">
+                    <i class="clearableinput_X">&times;</i>
+                </div>
+                <br>
+                <div class="input">
+                    <input type="text" name="pword" placeholder="Password">
+                    <i class="clearableinput_X">&times;</i>
+                </div>
+                <br>
+                <a class="btn login" href="#login" onclick="logoutfunction()">Login</a>
             </div>
         </form>
     </body>
