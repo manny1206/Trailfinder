@@ -1,0 +1,60 @@
+/*CLEARABLE SEARCH INPUT*/
+.input {
+    display: inline-block; 
+    position: relative; 
+    height: 45px;
+}
+.clearableinput {
+    font-size: 100%;
+    width: 100%;
+    border: 1px solid rgb(104, 104, 104);
+    background: transparent;
+    padding: 10px 20px;
+    border-radius: 10px;
+    outline: none;
+    color: white;
+} 
+.clearableinput input[type=text] {
+    position: relative;
+    margin-right: 10px;
+    width: 100%;
+    background: transparent;
+    padding: 10px 0px;
+    border-radius: 10px;
+    font-size: 100%;
+    font-weight: 300;
+    color: rgb(160, 160, 160);
+    letter-spacing: 1px;
+    outline: none;
+    padding-right: 24px;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+.clearableinput_X {
+    display: none;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    padding: 10 10px;
+    font-style: normal;
+    font-size: 190%;
+    font-weight: 300;
+    user-select: none;
+    cursor: pointer;
+}
+.clearable input::-ms-clear {  /* Remove IE default X */
+    display: none;
+}
+.clearableinput_X.box { /*for non-textboxes */
+    display: block;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    padding: 0 8px;
+    font-style: normal;
+    font-size: 190%;
+    font-weight: 300;
+    user-select: none;
+    cursor: pointer;
+}

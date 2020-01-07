@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
-body {
+@import 'https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700&display=swap';
+
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+
+@import 'app/general/css/nav+background.css';
+
+@import 'app/general/css/clearableinput.css';
+
+@import 'app/general/css/buttons.css';
+*{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color: white;/*text color*/
+    background-color: #212121;
+    font-family: 'Montserrat', 'Arial', 'sans-serif';
+    font-weight: 100;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
 }

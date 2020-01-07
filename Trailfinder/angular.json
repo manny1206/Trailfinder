@@ -28,9 +28,9 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/app/general(used by multiple pages)/js/nav-script.js",
-              "src/app/general(used by multiple pages)/js/clearableinput.js",
-              "src/app/general(used by multiple pages)/js/login-script.js"
+              "src/app/general/js/nav-script.js",
+              "src/app/general/js/clearableinput.js",
+              "src/app/general/js/login-script.js"
             ]
           },
           "configurations": {
@@ -96,7 +96,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js"
+            ]
           }
         },
         "lint": {
