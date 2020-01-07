@@ -1,3 +1,4 @@
+<router-outlet></router-outlet>
 <header>
     <nav>
         <div class="row">
@@ -6,29 +7,13 @@
                 <a href="javascript:void(0);" class="icon" onclick="navMenufunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-                <a href="#home" class="plink">Home</a>
-                <a href="javascript:void(0);" class="plink" onclick="loginfunction()">Login</a>
+                <a routerLink="" class="plink">Home</a>
+                <a routerLink="/login" class="plink">Login</a>
                 <a id="logout" class="plink logout">Logout</a>
                 <a href="#history" class="plink">History</a>
                 <a href="#save" class="plink">Save Location</a>
             </div>
         </div>
     </nav>
-    <app-home></app-home>
+    
 </header>
-<form id="login" class="login" method="POST">
-    <i class="clearableinput_X box" onclick="loginfunction()">&times;</i>
-    <div class="login-box">
-        <div class="input">
-            <input type="text" name="uname" placeholder="Username">
-            <i class="clearableinput_X">&times;</i>
-        </div>
-        <br>
-        <div class="input">
-            <input type="text" name="pword" placeholder="Password">
-            <i class="clearableinput_X">&times;</i>
-        </div>
-        <br>
-        <a class="btn login" href="#login" onclick="logoutfunction()">Login</a>
-    </div>
-</form>

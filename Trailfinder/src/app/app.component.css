@@ -1,4 +1,3 @@
-
 /*****************************************************************************/
 /*HEADER*/
 header {
@@ -7,51 +6,4 @@ header {
     background-position: center;
     height: 100vh;
     z-index: 0;
-}
-/*LOGIN POPUP*/
-.login {
-    display: none;
-}
-.login.active {
-    display: block;
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    height: 500px;
-    width: 400px;
-    background: rgba(70, 70, 70, 0.651);
-    border: 1px solid rgb(104, 104, 104);
-    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-    border-radius: 10px;
-    padding: 50px 60px;
-}
-.login-box {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.login-box div {
-    width: 100%;
-    margin: 10px;
-}
-.login-box input {
-    width: 100%;
-    border: 1px solid rgb(104, 104, 104);
-    border-radius: 10px;
-    outline: none;
-    background: transparent;
-    color: white;
-    font-size: 100%;
-    padding: 10px 20px;
-}
-.plink.logout { 
-    display: none;
-}
-.plink.logout.active {
-    display: inline-block
 }

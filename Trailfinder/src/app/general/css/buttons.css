@@ -1,31 +1,27 @@
 /*BUTTONS*/
 .btn {
-    text-align: center;
-    width: 35%;
-    display: inline-block;
     margin-top: 20px;
     text-transform: uppercase;
-    padding: 10px 10px;
-}
-.btn.login {/*for login popup*/
-    margin: 10px;
-}
-.short-txt {display: none;}
-.btn:link,
-.btn:visited {
+    display: inline-block;
+    padding: 10px 30px;
     font-weight: 300;
     color: white;
     text-decoration: none;
+    border: 2px solid #2cb178;
     border-radius: 10px;
-    background-color: #2cb178; 
     transition: background-color 0.2s;
+}
+
+.btn:link,
+.btn:visited {
+    background-color: #2cb178; 
     outline: none;
-    border: 1px solid #2cb178;
+    border: 2px solid #2cb178;
 }
 .btn:hover,
 .btn:active {
     background-color: #00b894;
-    border: 1px solid #00b894;
+    border: 2px solid #00b894;
     outline: none;
 }
 
@@ -59,8 +55,4 @@
     font-family: 'Montserrat', 'sans-serif';
     letter-spacing: 2px;
     text-transform: uppercase;
-}
-@media screen and (max-width: 1000px) {
-    .full-txt {display: none;}
-    .short-txt {display: block;}
 }

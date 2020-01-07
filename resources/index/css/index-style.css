@@ -295,7 +295,4 @@ h1 {
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-@media screen and (max-width: 1000px) {
-    .full-txt {display: none;}
-    .short-txt {display: block;}
-}
+.short-txt {display: block;}

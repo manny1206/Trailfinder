@@ -8,6 +8,7 @@
 }
 .headmap-text-box div {
     width: 60%;
+    margin-right: 10px;
 }
 h1 {
     width: 100%;
@@ -15,4 +16,9 @@ h1 {
     color: white;
     font-size: 240%;
     font-weight: 300;
+}
+.short-txt {display: none;}
+@media screen and (max-width: 1050px) {
+    .full-txt {display: none;}
+    .short-txt {display: block;}
 }
