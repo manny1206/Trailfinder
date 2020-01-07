@@ -24,12 +24,18 @@ header {
     background-size: cover;
     background-position: center;
     height: 100vh;
+    width: 100vw;
+    z-index: -1;
 }
 /*TOP NAV BAR*/
+nav {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
 .logo {
     position: absolute;
     left: 15vw;
-    z-index: 10;
     background: url(../img/logo.svg);
     background-size: cover;
     background: radial-gradient(ellipse farthest-corner at );
@@ -41,7 +47,6 @@ header {
 .nav-main {
     position: absolute;
     right: 15vw;
-    z-index: 10;
     overflow: hidden;
     float: right;
 }
@@ -112,3 +117,9 @@ header {
 }
 
 /*****************************************************************************/
+/*MAP*/
+#map {
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}

@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
-import { PreviousRouteService} from './previous-route.service';
+import { Component,OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 declare  var jQuery:  any;
 
@@ -9,13 +10,18 @@ declare  var jQuery:  any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Trailfinder';
-  prev: string;
+  route_curr: string;
 
-  constructor(
-    private previousRouteService: PreviousRouteService
-  ) {}
+  constructor(location: Location, router: Router) {//store location changes
+    router.events.subscribe(val => {
+      if (location.path() != "") {
+        this.route_curr = location.path();
+        console.log(this.route_curr);
+      } else {
+        this.route_curr = "Home";
+      }
+    });
+  }
   ngOnInit() {
-    this.prev = this.previousRouteService.getPreviousUrl();
   }
 }

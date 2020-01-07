@@ -7,8 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { PreviousRouteService } from './previous-route.service';
 import { AuthService } from './auth.service';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { AuthService } from './auth.service';
     HomeComponent,
     ProfileComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -33,12 +34,15 @@ import { AuthService } from './auth.service';
       {
         path: 'admin',
         component: AdminComponent
+      },
+      {
+        path: 'map',
+        component: MapComponent
       }
     ])
   ],
   providers: [
     AuthService,
-    PreviousRouteService
   ],
   bootstrap: [AppComponent]
 })

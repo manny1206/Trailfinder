@@ -1,19 +1,17 @@
 <router-outlet></router-outlet>
-<header>
-    <nav>
-        <div class="row">
-            <div class="logo"></div>
-            <div class="nav-main" id="topnav">
-                <a href="javascript:void(0);" class="icon" onclick="navMenufunction()">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <a routerLink="" class="plink">Home</a>
-                <a routerLink="/login" class="plink">Login</a>
-                <a id="logout" class="plink logout">Logout</a>
-                <a href="#history" class="plink">History</a>
-                <a href="#save" class="plink">Save Location</a>
-            </div>
+<header></header>
+<nav>
+    <div class="row">
+        <div class="logo"></div>
+        <div class="nav-main" id="topnav">
+            <a href="javascript:void(0);" class="icon" onclick="navMenufunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a routerLink="" class="plink">Home</a>
+            <a routerLink="/login" class="plink">Login</a>
+            <a routerLink={{previous}} id="logout" class="plink logout">Logout</a>
+            <a href="#history" class="plink">History</a>
+            <a href="#save" class="plink">Save Location</a>
         </div>
-    </nav>
-    
-</header>
+    </div>
+</nav>

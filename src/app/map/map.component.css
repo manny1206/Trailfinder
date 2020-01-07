@@ -1,0 +1,7 @@
+/*MAP*/
+#map {
+    float: top;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+}

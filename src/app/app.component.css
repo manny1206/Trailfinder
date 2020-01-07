@@ -1,9 +1,0 @@
-/*****************************************************************************/
-/*HEADER*/
-header {
-    background-image: linear-gradient(rgba(0,0,0,0.5), #000), url(general/img/background.svg);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    z-index: 0;
-}
