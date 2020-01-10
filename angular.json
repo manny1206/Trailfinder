@@ -30,7 +30,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "src/app/general/js/nav-script.js",
               "src/app/general/js/clearableinput.js",
-              "src/app/general/js/login-script.js"
+              "src/app/general/js/login-script.js",
+              "src/app/general/js/map-script.js"
             ]
           },
           "configurations": {

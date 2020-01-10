@@ -1,4 +1,4 @@
-import { Component,OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Component,OnInit, SystemJsNgModuleLoader, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
