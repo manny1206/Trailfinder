@@ -12,15 +12,7 @@ declare  var jQuery:  any;
 export class AppComponent implements OnInit {
   route_curr: string;
 
-  constructor(location: Location, router: Router) {//store location changes
-    router.events.subscribe(val => {
-      if (location.path() != "") {
-        this.route_curr = location.path();
-        console.log(this.route_curr);
-      } else {
-        this.route_curr = "Home";
-      }
-    });
+  constructor() {
   }
   ngOnInit() {
   }
