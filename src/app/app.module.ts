@@ -14,6 +14,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { MapComponent } from './map/map.component';
+import { NavComponent } from './nav/nav.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCntd_ZeC1St5WD_AGbJS2I_-5NQKBZpc",
@@ -33,7 +35,9 @@ const firebaseConfig = {
     ProfileComponent,
     LoginComponent,
     AdminComponent,
-    MapComponent
+    MapComponent,
+    NavComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
