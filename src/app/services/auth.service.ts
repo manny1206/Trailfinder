@@ -46,8 +46,11 @@ export class AuthService {
      const data = {
        uid: user.uid,
        email: user.email,
-       displayName: user.displayName,
-       photoURL: user.photoURL
+       name: user.name,
+       photoURL: user.photoURL,
+       bio: user.bio,
+       friends: user.friends,
+       country: user.country
      };
      return userRef.set(data, {merge: true});
    }

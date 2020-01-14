@@ -1,15 +1,9 @@
 export interface User {
-    //authenticators
-    email: string;
-    pword: string;
-    
-    //other user info
     uid: number;
+    email: string;
     name: string;
-    pfame: string;
     photoURL?: string;
     bio: string;
-    friends: number[];
+    friends: number[];//array of user ids
     country: string;
-    status: string;
 }
