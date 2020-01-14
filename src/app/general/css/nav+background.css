@@ -34,6 +34,7 @@ nav {
     z-index: 10;
     height: 100px;
     width: 100vw;
+    pointer-events: none;
 }
 .logo {
     position: absolute;
@@ -64,6 +65,7 @@ nav {
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.2s;
     padding: 4px 10px;
+    pointer-events: all;
 }
 .nav-main a:hover {
     border-bottom: 2px solid #2cb178;
