@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatashareService } from '../services/datashare.service';
 
 declare  var jQuery:  any;
 
@@ -8,10 +9,13 @@ declare  var jQuery:  any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  find: string;
+  constructor(private data: DatashareService) { }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.find = message)
   }
-
+  searchFIND(find) {
+    this.data.changeMessage(find);
+  }
 }

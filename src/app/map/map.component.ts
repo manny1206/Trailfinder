@@ -1,5 +1,6 @@
-import { Component,OnInit, SystemJsNgModuleLoader, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import {} from 'googlemaps';
+import { DatashareService } from '../services/datashare.service';
 
 declare  var jQuery:  any;
 
@@ -11,29 +12,37 @@ declare  var jQuery:  any;
 
 export class MapComponent implements AfterViewInit {
   @ViewChild('map',{static: false}) gmap: ElementRef;
+  searchFIND: string;//place you have to find from to search
   map: google.maps.Map;
-
-  lat = 40.730610;
-  lng = -73.935242;
-  coordinates = new google.maps.LatLng(this.lat, this.lng);
+  //create FIND location, which user searched for
+  latFIND = 40.730610;
+  lngFIND = -73.935242;
+  FINDcoord = new google.maps.LatLng(this.latFIND, this.lngFIND);
 
   mapOptions: google.maps.MapOptions = {
-    center: this.coordinates,
-    zoom: 8,
+    center: this.FINDcoord,
+    zoom: 15,
   };
 
-  marker = new google.maps.Marker({
-    position: this.coordinates,
+  FIND = new google.maps.Marker({
+    position: this.FINDcoord,
     map: this.map,
   });
 
+  constructor(private data: DatashareService) { }
+  generateFINDplaces() {
+    //search 10km radius of FIND
+
+  }
   mapInitializer() {
     this.map = new google.maps.Map(this.gmap.nativeElement, 
     this.mapOptions);
    }
-
+  ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.searchFIND = message);
+  }
   ngAfterViewInit() {
     this.mapInitializer();
-    this.marker.setMap(this.map);
+    this.FIND.setMap(this.map);
   }
 }
