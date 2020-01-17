@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import { MapComponent } from './map/map.component';
 import { NavComponent } from './nav/nav.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AutocompleteTextComponent } from './autocomplete-text/autocomplete-text.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCntd_ZeC1St5WD_AGbJS2I_-5NQKBZpc",
@@ -37,7 +39,8 @@ const firebaseConfig = {
     AdminComponent,
     MapComponent,
     NavComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    AutocompleteTextComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,11 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    GooglePlaceModule
+  ],
+  exports: [
+    AutocompleteTextComponent
   ],
   providers: [
   ],

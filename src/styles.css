@@ -26,3 +26,17 @@ html {
     max-width: 1140px;
     margin: 0 auto;
 }
+.pac-container {
+    font-family: 'Montserrat', 'Arial', 'sans-serif';
+    font-size: 150%;
+    font-weight: 400;
+    width: 100%;
+    border: 1px solid rgb(168, 168, 168);
+    border-top: none;
+    background: #333333c7;
+    padding: 10px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+    color: white;
+}
