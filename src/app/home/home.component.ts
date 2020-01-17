@@ -9,7 +9,13 @@ declare  var jQuery:  any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  address;
+  establishmentAddress;
+
   formattedAddress: string;
+  formattedEstablishmentAddress: string;
+  
+  find;
   options = {
     componentRestrictions : {
       country: ['us']
@@ -17,6 +23,9 @@ export class HomeComponent implements OnInit {
   }
   constructor(private data: DatashareService) { }
 
+  getAddress(place: object) {
+    this.address = place['formatted_address'];
+  }
   ngOnInit() {
     this.data.currentMessage.subscribe(message => this.formattedAddress = message)
   }
