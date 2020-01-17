@@ -305,6 +305,9 @@ firebase/firestore
 
 firebase/storage
 
+ngx-google-places-autocomplete
+MIT
+
 regenerator-runtime
 MIT
 MIT License
