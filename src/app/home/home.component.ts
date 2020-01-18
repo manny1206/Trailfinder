@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { DatashareService } from '../services/datashare.service';
 import { AutocompleteTextComponent } from '../autocomplete-text/autocomplete-text.component';
 declare  var jQuery:  any;
@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
 
   formattedAddress: string;
   formattedEstablishmentAddress: string;
+
+  phone: string;
   
   find;
   options = {
@@ -21,10 +23,12 @@ export class HomeComponent implements OnInit {
       country: ['us']
     }
   }
-  constructor(private data: DatashareService) { }
+  constructor(private data: DatashareService, public zone: NgZone) { }
 
   getAddress(place: object) {
     this.address = place['formatted_address'];
+    this.formattedAddress = place['formatted_address'];
+    this.zone.run(() => this.formattedAddress = place['formatted_address']);
   }
   ngOnInit() {
     this.data.currentMessage.subscribe(message => this.formattedAddress = message)
@@ -32,7 +36,7 @@ export class HomeComponent implements OnInit {
   public handleAddressChange(address: any) {
     this.formattedAddress = address.formatted_address;
 }
-  searchFIND(find) {
-    this.data.changeMessage(find);
+  searchFIND(formattedAddress) {
+    this.data.changeMessage(formattedAddress);
   }
 }

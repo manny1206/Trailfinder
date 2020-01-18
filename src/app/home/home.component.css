@@ -17,6 +17,12 @@ h1 {
     font-size: 240%;
     font-weight: 300;
 }
+.input {
+    display: inline-block;
+}
+.clearableinput_X {
+    margin-right: 15px;
+}
 .short-txt {display: none;}
 @media screen and (max-width: 1050px) {
     .full-txt {display: none;}
