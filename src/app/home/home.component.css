@@ -24,6 +24,7 @@ h1 {
     display: inline-block;
     width: 35%;
     margin-left: 10px;
+    font-size: 100%;
 }
 .short-txt {display: none;}
 @media screen and (max-width: 845px) {
