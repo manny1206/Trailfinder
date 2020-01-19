@@ -32,10 +32,6 @@ h1 {
 }
 .short-txt {display: none;}
 @media screen and (max-width: 950px) {
-    .full-txt {display: none;}
-    .short-txt {display: block;}
-}
-@media screen and (max-width: 900px) {
     .headmap-text-box{
         width: 85%;
         margin: 10px;
