@@ -32,7 +32,7 @@ h1 {
 }
 @media screen and (max-width: 820px) {
     .headmap-text-box{
-        width: 100%;
+        width: 90%;
         margin: 20px;
         overflow: hidden;
     }
