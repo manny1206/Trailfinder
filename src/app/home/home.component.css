@@ -4,7 +4,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 50vw;
+    width: 60vw;
+}
+.headmap-text-box div { 
+    float: left;
 }
 h1 {
     width: 100%;
@@ -15,7 +18,7 @@ h1 {
 }
 .input {
     display: inline-block;
-    width: 60%;
+    width: 100%;
 }
 .clearableinput_X {
     margin-right: 15px;
@@ -23,18 +26,25 @@ h1 {
 .btn.find {
     display: inline-block;
     width: 35%;
+    margin-top: 0;
     margin-left: 10px;
     font-size: 100%;
 }
 .short-txt {display: none;}
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 950px) {
     .full-txt {display: none;}
     .short-txt {display: block;}
 }
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 900px) {
     .headmap-text-box{
         width: 85%;
         margin: 10px;
         overflow: hidden;
+    }
+    .headmap-text-box div {width: 100%;}
+    .btn.find {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
     }
 }

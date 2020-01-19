@@ -12,8 +12,8 @@ declare  var jQuery:  any;
 
 export class MapComponent implements AfterViewInit {
   @ViewChild('map',{static: false}) gmap: ElementRef;
-  searchFIND: string;//location recieved from search
   map: google.maps.Map;
+  searchFIND: string;//placeid recieved from search
   //create FIND location, which user searched for
   latFIND = 40.730610;
   lngFIND = -73.935242;

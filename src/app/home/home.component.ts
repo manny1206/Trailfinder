@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   formattedAddress: string;
   formattedEstablishmentAddress: string;
 
-  phone: string;
+  placeid: string;
   
   find;
   options = {
@@ -24,14 +24,17 @@ export class HomeComponent implements OnInit {
     }
   }
   constructor(private data: DatashareService, public zone: NgZone) { }
-
+//Places Funtions//////////////////////////////////////////////////////////////
   getAddress(place: object) {
     this.address = place['formatted_address'];
     this.formattedAddress = place['formatted_address'];
     this.zone.run(() => this.formattedAddress = place['formatted_address']);
+    this.placeid = place['id'];
+    this.zone.run(() => this.placeid = place['id']);
   }
+//Datashare Functions//////////////////////////////////////////////////////////
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.formattedAddress = message)
+    this.data.currentMessage.subscribe(message => this.placeid = message);
   }
   public handleAddressChange(address: any) {
     this.formattedAddress = address.formatted_address;
