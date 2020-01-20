@@ -35,7 +35,7 @@
     display: none;
     position: absolute;
     top: 0%;
-    right: 0%;
+    left: 50%;
     padding: 10 10px;
     font-style: normal;
     font-size: 190%;

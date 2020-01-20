@@ -4,10 +4,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60vw;
+    width: 700px;
 }
 .headmap-text-box div { 
     float: left;
+    width: 50%;
 }
 h1 {
     width: 100%;
@@ -33,7 +34,7 @@ h1 {
 .short-txt {display: none;}
 @media screen and (max-width: 950px) {
     .headmap-text-box{
-        width: 85%;
+        width: 85vw;
         margin: 10px;
         overflow: hidden;
     }
