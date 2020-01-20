@@ -11,38 +11,64 @@ declare  var jQuery:  any;
 })
 
 export class MapComponent implements AfterViewInit {
+  ////////////////////////////!!!MAP!!!////////////////////////////////////////
   @ViewChild('map',{static: false}) gmap: ElementRef;
+  //MAP FIELDS////////////////////////////////////////
+  //searched map location
   map: google.maps.Map;
-  searchFIND: string;//placeid recieved from search
-  //create FIND location, which user searched for
-  latFIND = 40.730610;
-  lngFIND = -73.935242;
-  FINDcoord = new google.maps.LatLng(this.latFIND, this.lngFIND);
+  placeid: string;//placeid recieved from search
+  
+  //if user wants to use current position
 
+  //default map location(newyork)
+  latdef = 40.730610;
+  lngdef = -73.935242;
+  defcoord = new google.maps.LatLng(this.latdef, this.lngdef);
+  //map setup
   mapOptions: google.maps.MapOptions = {
-    center: this.FINDcoord,
+    center: this.defcoord,
     zoom: 15,
   };
 
-  FIND = new google.maps.Marker({
-    position: this.FINDcoord,
-    map: this.map,
-  });
-
+  FIND = this.setFIND(this.placeid,this.defcoord);
+  //MAP FUNCTIONS/////////////////////////////////////
   constructor(private data: DatashareService) { }
+  setFIND(placeid, defcoord) {
+    var find;
+    var findservice = new google.maps.places.PlacesService(this.map);;
+    var findrequest;//get details from placeid
+    if (placeid != null && placeid != '') {
+      findrequest = {
+        placeId: placeid,
+        fields: ['name', 'formatted_address', 'geometry']
+      };
+      
+      findservice.getDetails(findrequest, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+          });
+        }
+      }
+    } else {
+      find = 
+    }
+  }
   generateFINDplaces() {
-    //search 10km radius of FIND
+    //search 10km radius of searched location
 
   }
   mapInitializer() {
-    this.map = new google.maps.Map(this.gmap.nativeElement, 
-    this.mapOptions);
+    this.map = new google.maps.Map(this.gmap.nativeElement,this.mapOptions);
    }
-  ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.searchFIND = message);
-  }
+  
   ngAfterViewInit() {
     this.mapInitializer();
     this.FIND.setMap(this.map);
+  }
+  /////////////////////////////////////////////////////////////////////////////
+  ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.placeid = message);
   }
 }
