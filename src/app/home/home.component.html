@@ -5,7 +5,7 @@
             <app-autocomplete-text class="input" (setAddress)="getAddress($event)" addressType="geocode"></app-autocomplete-text>
             <i class="clearableinput_X">&times;</i>
         </div>
-        <button (click)="searchFIND(formattedAddress)"routerLink="/map" class="btn find">
+        <button (click)="searchfind(placeid)"routerLink="/map" class="btn find">
             <span class="full-txt">Find Trails</span>
         </button>
         <p>Location: {{formattedAddress}}</p>

@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   public handleAddressChange(address: any) {
     this.formattedAddress = address.formatted_address;
 }
-  searchFIND(formattedAddress) {
-    this.data.changeMessage(formattedAddress);
+  searchfind(placeid) {
+    this.data.changeMessage(placeid);
   }
 }
