@@ -15,10 +15,10 @@ export class MapComponent implements AfterViewInit {
   ////////////////////////////!!!MAP!!!////////////////////////////////////////
   @ViewChild('map',{static: false}) gmap: ElementRef;
   //MAP FIELDS////////////////////////////////////////
-  find;
+  placeid: string;//placeid recieved from search
   //searched map location
   map: google.maps.Map;
-  placeid: string;//placeid recieved from search
+  find;
   findservice;
   findrequest;
   infowindow;
@@ -40,6 +40,7 @@ export class MapComponent implements AfterViewInit {
    }
   
   ngAfterViewInit() {
+    console.log(this.placeid);
     var mapOptions: google.maps.MapOptions = {
       center: this.defcoord,
       zoom: 15,
@@ -50,12 +51,9 @@ export class MapComponent implements AfterViewInit {
     if (this.placeid != null && this.placeid != '') {//get details from placeid
       this.findrequest = {placeId: this.placeid.trim()};
       
-      this.findservice.getDetails(this.findrequest,
+      findservice.getDetails(this.findrequest,
         function(result, status) {
-          if (status != google.maps.places.PlacesServiceStatus.OK) {
-            alert(status);
-            return;
-          }
+          
           console.log(result);
           var marker = new google.maps.Marker({
             map: this.map,
@@ -85,6 +83,6 @@ export class MapComponent implements AfterViewInit {
   }
   /////////////////////////////////////////////////////////////////////////////
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.placeid = message);
+    this.data.currentMessage.subscribe(message => this.placeid = message.trim());
   }
 }
