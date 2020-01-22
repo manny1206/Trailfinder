@@ -45,32 +45,33 @@ export class MapComponent implements AfterViewInit {
       center: this.defcoord,
       zoom: 15,
     };
-    this.map = new google.maps.Map(this.gmap.nativeElement,mapOptions);
-    this.infowindow = new google.maps.InfoWindow();
-    var findservice = new google.maps.places.PlacesService(this.map);
-    if (this.placeid != null && this.placeid != '') {//get details from placeid
-      this.findrequest = {placeId: this.placeid.trim()};
+    var map = new google.maps.Map(this.gmap.nativeElement,mapOptions);
+    var infowindow = new google.maps.InfoWindow();
+    var findservice = new google.maps.places.PlacesService(map);
+    var placeid = this.placeid;
+    if (placeid != null && placeid != '') {//get details from placeid
+      this.findrequest = {placeId: placeid.trim()};
       
       findservice.getDetails(this.findrequest,
         function(result, status) {
           
           console.log(result);
           var marker = new google.maps.Marker({
-            map: this.map,
+            map: map,
             place: {
-              placeId: this.placeid,
+              placeId: placeid,
               location: result.geometry.location
             }
           });
           console.log(result.geometry.location.toUrlValue(6));
-          this.map.setCenter(result.geometry.location);
+          map.setCenter(result.geometry.location);
           var address = result.adr_address;
           var newAddr = address.split("</span>,");
-          this.infowindow.setContent(result.name + "<br>" + newAddr[0] + "<br>" + newAddr[1] + "<br>" + newAddr[2]);
-          google.maps.event.addListener(this.infowindow, 'domready', function() {
-            this.map.setCenter(marker.getPosition());
+          infowindow.setContent(result.name + "<br>" + newAddr[0] + "<br>" + newAddr[1] + "<br>" + newAddr[2]);
+          google.maps.event.addListener(infowindow, 'domready', function() {
+            map.setCenter(marker.getPosition());
           });
-          this.infowindow.open(map, marker);
+          infowindow.open(map, marker);
         }
       );
     } else {//TODO: implement current user location

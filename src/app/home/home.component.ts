@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this.formattedAddress = place['formatted_address'];
     this.zone.run(() => this.formattedAddress = place['formatted_address']);
     this.placeid = place['id'];
-    this.zone.run(() => this.placeid = place['id']);
+    this.zone.run(() => this.placeid = place['place_id']);
   }
 //Datashare Functions//////////////////////////////////////////////////////////
   ngOnInit() {

@@ -2,12 +2,11 @@
     <div class="headmap-text-box">
         <h1>Welcome to the Outdoors.</h1>
         <div>
-            <app-autocomplete-text class="input" (setAddress)="getAddress($event)" addressType="geocode"></app-autocomplete-text>
+            <app-autocomplete-text class="input" (setAddress)="getAddress($event)"></app-autocomplete-text>
             <i class="clearableinput_X">&times;</i>
         </div>
         <button (click)="searchfind(placeid)"routerLink="/map" class="btn find">
             <span class="full-txt">Find Trails</span>
         </button>
         <p>Location: {{formattedAddress}}</p>
-        <p>Place ID: {{placeid}}</p>
     </div>
