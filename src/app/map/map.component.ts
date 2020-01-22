@@ -41,7 +41,6 @@ export class MapComponent implements AfterViewInit {
       zoom: 15,
     };
     var map = new google.maps.Map(this.gmap.nativeElement,mapOptions);
-    var infowindow = new google.maps.InfoWindow();
     var findservice = new google.maps.places.PlacesService(map);
     var placeid = this.placeid;
     if (placeid != null && placeid != '') {//get details from placeid
@@ -72,10 +71,16 @@ export class MapComponent implements AfterViewInit {
             strokeWeight: 2,
             
           });
-          //set up infowindow
+          //set up infowindow and center map on marker
           var address = result.adr_address;
           var newAddr = address.split("</span>,");
+          var infowindow = new google.maps.InfoWindow({
+            
+          });
           infowindow.setContent(result.name + "<br>" + newAddr[0] + "<br>" + newAddr[1] + "<br>" + newAddr[2]);
+          google.maps.event.addListener(marker,'click',function(){
+            infowindow.open(map,marker);
+          });
           google.maps.event.addListener(infowindow, 'domready', function() {
             map.setCenter(marker.getPosition());
           });
