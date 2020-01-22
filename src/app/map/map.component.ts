@@ -31,16 +31,11 @@ export class MapComponent implements AfterViewInit {
   
   //MAP FUNCTIONS/////////////////////////////////////
   constructor(private data: DatashareService) { }
-  generateFINDplaces() {
+  generateSearchRadius() {
     //search 10km radius of searched location
 
   }
-  mapInitializer() {
-    
-   }
-  
-  ngAfterViewInit() {
-    console.log(this.placeid);
+  ngAfterViewInit() {//map initializer
     var mapOptions: google.maps.MapOptions = {
       center: this.defcoord,
       zoom: 15,
@@ -54,8 +49,8 @@ export class MapComponent implements AfterViewInit {
       
       findservice.getDetails(this.findrequest,
         function(result, status) {
-          
           console.log(result);
+          //draw marker and add to map, using placeid location
           var marker = new google.maps.Marker({
             map: map,
             place: {
@@ -65,6 +60,19 @@ export class MapComponent implements AfterViewInit {
           });
           console.log(result.geometry.location.toUrlValue(6));
           map.setCenter(result.geometry.location);
+          //draw circle and bind to marker
+          var circle = new google.maps.Circle({
+            map: map,
+            center: marker.getPosition(),
+            radius: 10000, //10km in meters
+            fillColor: '#2cb178',
+            fillOpacity: 0.35,
+            strokeColor: '#2cb178',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            
+          });
+          //set up infowindow
           var address = result.adr_address;
           var newAddr = address.split("</span>,");
           infowindow.setContent(result.name + "<br>" + newAddr[0] + "<br>" + newAddr[1] + "<br>" + newAddr[2]);
