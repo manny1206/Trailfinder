@@ -16,18 +16,100 @@ export class MapComponent implements AfterViewInit {
   @ViewChild('map',{static: false}) gmap: ElementRef;
   //MAP FIELDS////////////////////////////////////////
   placeid: string;//placeid recieved from search
-  //searched map location
-  map: google.maps.Map;
-  find;
-  findservice;
-  findrequest;
-  infowindow;
-  //if user wants to use current position
-
   //default map location(newyork)
   latdef = 40.730610;
   lngdef = -73.935242;
   defcoord = new google.maps.LatLng(this.latdef, this.lngdef);
+  //searched map location
+  map: google.maps.Map;
+  mapOptions: google.maps.MapOptions = {
+    center: this.defcoord,
+    zoom: 12,
+    styles: [
+      {"elementType": "geometry",
+       "stylers": [{"color": "#212121"}]
+      },
+      {"elementType": "labels.icon",
+       "stylers": [{"visibility": "off"}]
+      },
+      {"elementType": "labels.text.fill",
+       "stylers": [{"color": "#757575"}]
+      },
+      {"elementType": "labels.text.stroke",
+       "stylers": [{"color": "#212121"}]
+      },
+      {"featureType": "administrative",
+       "elementType": "geometry",
+       "stylers": [{"color": "#757575"}]
+      },
+      {"featureType": "administrative.country",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#9e9e9e"}]
+      },
+      {"featureType": "administrative.land_parcel",
+       "stylers": [{"visibility": "off"}]
+      },
+      {"featureType": "administrative.locality",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#bdbdbd"}]
+      },
+      {"featureType": "poi",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#757575"}]
+      },
+      {"featureType": "poi.park",
+       "elementType": "geometry",
+       "stylers": [{"color": "#181818"}]
+      },
+      {"featureType": "poi.park",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#616161"}]
+      },
+      {"featureType": "poi.park",
+       "elementType": "labels.text.stroke",
+       "stylers": [{"color": "#1b1b1b"}]
+      },
+      {"featureType": "road",
+       "elementType": "geometry.fill",
+       "stylers": [{"color": "#2c2c2c"}]
+      },
+      {"featureType": "road",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#8a8a8a"}]
+      },
+      {"featureType": "road.arterial",
+       "elementType": "geometry",
+       "stylers": [{"color": "#373737"}]
+      },
+      {"featureType": "road.highway",
+       "elementType": "geometry",
+       "stylers": [{"color": "#3c3c3c"}]
+      },
+      {"featureType": "road.highway.controlled_access",
+       "elementType": "geometry",
+       "stylers": [{"color": "#4e4e4e"}]
+      },
+      {"featureType": "road.local",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#616161"}]
+      },
+      {"featureType": "transit",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#757575"}]
+      },
+      {"featureType": "water",
+       "elementType": "geometry",
+       "stylers": [{"color": "#000000"}]
+      },
+      {"featureType": "water",
+       "elementType": "labels.text.fill",
+       "stylers": [{"color": "#3d3d3d"}]
+      }
+    ]
+  };
+  findrequest;
+
+  //if user wants to use current location
   
   //MAP FUNCTIONS/////////////////////////////////////
   constructor(private data: DatashareService) { }
@@ -36,202 +118,13 @@ export class MapComponent implements AfterViewInit {
 
   }
   ngAfterViewInit() {//map initializer
-    var mapOptions: google.maps.MapOptions = {
-      center: this.defcoord,
-      zoom: 12,
-      styles: [
-        {
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#212121"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.icon",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.text.stroke",
-          "stylers": [
-            {
-              "color": "#212121"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative.country",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#9e9e9e"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative.land_parcel",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative.locality",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#bdbdbd"
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#181818"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#616161"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "labels.text.stroke",
-          "stylers": [
-            {
-              "color": "#1b1b1b"
-            }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "geometry.fill",
-          "stylers": [
-            {
-              "color": "#2c2c2c"
-            }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#8a8a8a"
-            }
-          ]
-        },
-        {
-          "featureType": "road.arterial",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#373737"
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#3c3c3c"
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway.controlled_access",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#4e4e4e"
-            }
-          ]
-        },
-        {
-          "featureType": "road.local",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#616161"
-            }
-          ]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#000000"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#3d3d3d"
-            }
-          ]
-        }
-      ]
-    };
+    var mapOptions = this.mapOptions;
     var map = new google.maps.Map(this.gmap.nativeElement,mapOptions);
     var findservice = new google.maps.places.PlacesService(map);
     var placeid = this.placeid;
     if (placeid != null && placeid != '') {//get details from placeid
       this.findrequest = {placeId: placeid.trim()};
-      
+      //access place data to plot on map
       findservice.getDetails(this.findrequest,
         function(result, status) {
           console.log(result);
@@ -245,7 +138,7 @@ export class MapComponent implements AfterViewInit {
           });
           console.log(result.geometry.location.toUrlValue(6));
           map.setCenter(result.geometry.location);
-          //draw circle and bind to marker
+          //draw circle at marker location
           var circle = new google.maps.Circle({
             map: map,
             center: result.geometry.location,
@@ -273,7 +166,7 @@ export class MapComponent implements AfterViewInit {
         }
       );
     } else {//TODO: implement current user location
-      this.find = new google.maps.Marker({
+      var find = new google.maps.Marker({
         position: this.defcoord,
         map: this.map
       });
