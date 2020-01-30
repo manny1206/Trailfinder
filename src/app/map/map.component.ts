@@ -120,8 +120,27 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit() {//map initializer
     var mapOptions = this.mapOptions;
     var map = new google.maps.Map(this.gmap.nativeElement,mapOptions);
+    var bounds = new google.maps.LatLngBounds();
+    var infowindow = new google.maps.InfoWindow;
+    var address;
+    var newAddr;
+    var icons = {
+      find: {
+        icon: {
+          url: "../general/img/find_marker.png",
+          scaledSize: new google.maps.Size(96,96)
+        }
+      },
+      trail: {
+        icon: {
+          url: "../general/img/trail_marker.png",
+          scaledSize: new google.maps.Size(64,64)
+        }
+      }
+    };
     var findservice = new google.maps.places.PlacesService(map);
     var placeid = this.placeid;
+    //USE THIS IF USER ENTERS LOCATION MANUALLY////////////////////////////////
     if (placeid != null && placeid != '') {//get details from placeid
       this.findrequest = {placeId: placeid.trim()};
       //access place data to plot on map
@@ -150,9 +169,9 @@ export class MapComponent implements AfterViewInit {
             strokeWeight: 2,
           });
           //set up infowindow and center map on marker
-          var address = result.adr_address;
-          var newAddr = address.split("</span>,");
-          var infowindow = new google.maps.InfoWindow({});
+          address = result.adr_address;
+          newAddr = address.split("</span>,");
+          infowindow = new google.maps.InfoWindow({});
           infowindow.setContent(result.name + "<br>" + newAddr[0] + "<br>" + newAddr[1] + "<br>" + newAddr[2]);
           google.maps.event.addListener(marker,'click',function(){
             infowindow.open(map,marker);
@@ -165,13 +184,45 @@ export class MapComponent implements AfterViewInit {
           infowindow.open(map, marker);
         }
       );
-    } else {//TODO: implement current user location
-      var find = new google.maps.Marker({
-        position: this.defcoord,
-        map: this.map
-      });
+    //USE THIS IF THEY'RE USING CURRENT LOCATION///////////////////////////////
+    } else {
+      var pos = this.defcoord;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+          bounds.extend(pos);
+
+          infowindow.setPosition(pos);
+          infowindow.setContent('Current Location');
+          infowindow.open(map);
+          map.setCenter(pos);
+
+          /* TODO: Step 3B2, Call the Places Nearby Search */
+        }, () => {
+          // Browser supports geolocation, but user has denied permission
+          handleLocationError(true, infowindow);
+        });
+      } else {
+        // Browser doesn't support geolocation
+        handleLocationError(false, infowindow);
+      }
+      // Handle a geolocation error
+      function handleLocationError(browserHasGeolocation, infoWindow) {
+        var currentInfoWindow;
+        // Set default location
+        pos = this.defcoord;
+        map = new google.maps.Map(this.gmap.nativeElement,mapOptions);
+        // Display an InfoWindow at the map center
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+          'Geolocation permissions denied. Using default location.' :
+          'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+        currentInfoWindow = infoWindow;
+
+        /* TODO: Step 3B3, Call the Places Nearby Search */
+      }
     }
-    
   }
   /////////////////////////////////////////////////////////////////////////////
   ngOnInit() {
