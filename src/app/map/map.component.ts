@@ -182,6 +182,9 @@ export class MapComponent implements AfterViewInit {
             map.setCenter(marker.getPosition());
           });
           infowindow.open(map, marker);
+          
+          //get nearby places 'n stuff
+          getNearbyPlaces(result.geometry.location);
         }
       );
     //USE THIS IF THEY'RE USING CURRENT LOCATION///////////////////////////////
@@ -196,8 +199,17 @@ export class MapComponent implements AfterViewInit {
           infowindow.setContent('Current Location');
           infowindow.open(map);
           map.setCenter(pos);
-
-          /* TODO: Step 3B2, Call the Places Nearby Search */
+          //draw circle at marker location
+          var circle = new google.maps.Circle({
+            map: map,
+            center: pos,
+            radius: 15000, //15km in meters
+            fillColor: '#2cb178',
+            fillOpacity: 0.35,
+            strokeColor: '#2cb178',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+          });
         }, () => {
           // Browser supports geolocation, but user has denied permission
           handleLocationError(true, infowindow);
@@ -206,23 +218,52 @@ export class MapComponent implements AfterViewInit {
         // Browser doesn't support geolocation
         handleLocationError(false, infowindow);
       }
-      // Handle a geolocation error
-      function handleLocationError(browserHasGeolocation, infoWindow) {
-        var currentInfoWindow;
-        // Set default location
-        pos = this.defcoord;
-        map = new google.maps.Map(this.gmap.nativeElement,mapOptions);
-        // Display an InfoWindow at the map center
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-          'Geolocation permissions denied. Using default location.' :
-          'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-        currentInfoWindow = infoWindow;
+    }
+    ///INTERAL FUNCTIONS//////////////////////////////////
+      //1.Handle a geolocation error//
+    function handleLocationError(browserHasGeolocation, infoWindow) {
+      var currentInfoWindow;
+      // Set default location
+      pos = this.defcoord;
+      map = new google.maps.Map(this.gmap.nativeElement, mapOptions);
+      // Display an InfoWindow at the map center
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Geolocation permissions denied. Using default location.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+      currentInfoWindow = infoWindow;
 
-        /* TODO: Step 3B3, Call the Places Nearby Search */
+      getNearbyPlaces(pos);
+    }
+    //2.handle nearby places
+    function getNearbyPlaces(position) {
+      var request = {
+        location: position,
+        rankBy: google.maps.places.RankBy.DISTANCE,
+        keyword: 'trail'
+      };
+      findservice.nearbySearch(request, nearbyCallback); 
+    }
+    function nearbyCallback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        createMarkers(results);
       }
     }
+    function createMarkers(places) {
+      places.forEach(place => {
+        let marker = new google.maps.Marker({
+          position: place.geometry.location,
+          map: map,
+          title: place.name
+        });
+        //TODO: CLICK LISTENERS
+
+        bounds.extend(place.geometry.location);
+      });
+      map.fitBounds(bounds);
+    }
+    //TODO: PLACE DETAILS IN INFOWINDOW
   }
   /////////////////////////////////////////////////////////////////////////////
   ngOnInit() {
